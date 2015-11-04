@@ -23,11 +23,11 @@
         "Illuminate\\Translation\\TranslationServiceProvider",
         "Illuminate\\Validation\\ValidationServiceProvider",
         "Illuminate\\View\\ViewServiceProvider",
-        "App\\Providers\\AppServiceProvider",
-        "App\\Providers\\AuthServiceProvider",
-        "App\\Providers\\EventServiceProvider",
-        "App\\Providers\\RouteServiceProvider",
-        "App\\Providers\\AnnotationsServiceProvider",
+        "scm\\Providers\\AppServiceProvider",
+        "scm\\Providers\\AuthServiceProvider",
+        "scm\\Providers\\EventServiceProvider",
+        "scm\\Providers\\RouteServiceProvider",
+        "scm\\Providers\\AnnotationsServiceProvider",
         "Collective\\Html\\HtmlServiceProvider"
     ],
     "eager": [
@@ -42,11 +42,11 @@
         "Illuminate\\Session\\SessionServiceProvider",
         "Illuminate\\Validation\\ValidationServiceProvider",
         "Illuminate\\View\\ViewServiceProvider",
-        "App\\Providers\\AppServiceProvider",
-        "App\\Providers\\AuthServiceProvider",
-        "App\\Providers\\EventServiceProvider",
-        "App\\Providers\\RouteServiceProvider",
-        "App\\Providers\\AnnotationsServiceProvider"
+        "scm\\Providers\\AppServiceProvider",
+        "scm\\Providers\\AuthServiceProvider",
+        "scm\\Providers\\EventServiceProvider",
+        "scm\\Providers\\RouteServiceProvider",
+        "scm\\Providers\\AnnotationsServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

@@ -3,7 +3,10 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+/**
+* Version 1 User table
+*/
+class CreateUserTable extends Migration
 {
     /**
      * Run the migrations.
