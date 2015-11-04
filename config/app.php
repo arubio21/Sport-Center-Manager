@@ -140,15 +140,15 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        scm\Providers\AppServiceProvider::class,
+        scm\Providers\AuthServiceProvider::class,
+        scm\Providers\EventServiceProvider::class,
+        scm\Providers\RouteServiceProvider::class,
 
         /*
         * Laravel Collective Components
         */
-        App\Providers\AnnotationsServiceProvider::class,
+        scm\Providers\AnnotationsServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
 
     ],

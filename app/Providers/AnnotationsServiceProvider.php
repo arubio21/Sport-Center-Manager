@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Providers;
+namespace scm\Providers;
 
 use Collective\Annotations\AnnotationsServiceProvider as ServiceProvider;
 
@@ -38,7 +38,7 @@ class AnnotationsServiceProvider extends ServiceProvider {
 
     /**
      * Determines whether or not to automatically scan the controllers
-     * directory (App\Http\Controllers) for routes
+     * directory (scm\Http\Controllers) for routes
      *
      * @var bool
      */
