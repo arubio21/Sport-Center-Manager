@@ -37,7 +37,7 @@ class UserController extends Controller
             'tittle' => 'Nuevo Usuario',
             'url'   => 'user/store',
             'include'   => 'user.forms.usr',
-            'types' => Type::lists('name', 'id')
+            'types' => Type::lists('name', 'id'),                    
         ];
 
         return view('user.create', $aData);
@@ -57,6 +57,9 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->type_id = $request->type;
+        //First we take the Unix date in ms, we get the first 10 characters and we encrypt 
+        //with md5 and finally we encrypt again with the laravel method bcrypt            
+        $user->password = bcrypt(substr( md5(microtime()), 1, 10));
         $user->save(); 
 
         return redirect('/user')->with('message', 'store');

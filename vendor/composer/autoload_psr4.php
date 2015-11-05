@@ -28,6 +28,7 @@ return array(
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
+    'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib/Doctrine/Common/Cache'),
     'Collective\\Html\\' => array($vendorDir . '/laravelcollective/html/src'),
     'Collective\\Annotations\\' => array($vendorDir . '/laravelcollective/annotations/src'),
     'ClassPreloader\\' => array($vendorDir . '/classpreloader/classpreloader/src'),
