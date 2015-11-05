@@ -60,7 +60,7 @@ class UserController extends Controller
         //First we take the Unix date in ms, we get the first 10 characters and we encrypt 
         //with md5 and finally we encrypt again with the laravel method bcrypt            
         $user->password = bcrypt(substr( md5(microtime()), 1, 10));
-        $user->save(); 
+        $user->save();         
 
         return redirect('/user')->with('message', 'store');
     }
