@@ -7,24 +7,20 @@
 </div>
 @endif
 
-@section('title', 'Mostrar usuarios')
+@section('title', 'Mostrar tipos')
 
 @section('content')
 
 	<table class="table">
 		<thead>
-			<th>Nombre</th>
-			<th>Email</th>
-			<th>Telefono</th>
+			<th>Nombre</th>			
 			<th>Operaciones</th>
 		</thead>
-		@foreach($users as $user)
+		@foreach($types as $type)
 		<tbody>
-			<td>{{$user->name}}</td>
-			<td>{{$user->email}}</td>
-			<td>{{$user->phone}}</td>
+			<td>{{$type->name}}</td>
 			<td>
-				<?php echo link_to('user/edit/'.$user->id, $title = 'Editar', $attributes = array('class' => 'btn btn-primary'), $secure = null); ?>				
+				<?php echo link_to('user/type/edit/'.$type->id, $title = 'Editar', $attributes = array('class' => 'btn btn-primary'), $secure = null); ?>				
 			</td>
 		</tbody>
 		@endforeach

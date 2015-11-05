@@ -10,6 +10,7 @@ use Session;
 use Redirect;
 use scm\Http\Requests;
 use scm\Http\Requests\UserCreateRequest;
+use scm\Http\Requests\TypeCreateRequest;
 use scm\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -32,7 +33,14 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create', ['types' => Type::lists('name', 'id')]);
+        $aData = [
+            'tittle' => 'Nuevo Usuario',
+            'url'   => 'user/store',
+            'include'   => 'user.forms.usr',
+            'types' => Type::lists('name', 'id')
+        ];
+
+        return view('user.create', $aData);
     }
 
     /**
@@ -69,6 +77,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      * 
+     * @Get("user/edit/{id}")
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -81,6 +90,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * @Put("user/update/{id}")
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -99,6 +109,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @Delete("user/delete/{id}")
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -109,5 +120,104 @@ class UserController extends Controller
         Session::flash('message', 'Usuario Eliminado Correctamente');
 
         return Redirect::to('/user');
+    }
+
+    /**
+    * Show all the types
+    *
+    * @Get("user/type")
+    * @return \Illuminate\Http\Response
+    */
+    public function indexType(){
+
+        return view('user.indexType', ['types' => Type::all()]);
+    }
+
+    /**
+    * Show the form for creating a new type
+    *
+    * @Get("user/type/create")
+    * @return \Illuminate\Http\Response
+    */
+    public function createType(){
+
+        $aData = [
+            'tittle' => 'Nuevo tipo de usuario',
+            'url'   => 'user/type/store',
+            'include'   => 'user.forms.type'
+        ];
+
+        return view('user.create', $aData);
+    }
+
+    /**
+     * Store a newly created type in storage.
+     *
+     * @Post("user/type/store")
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     *
+    */
+    public function storeType(TypeCreateRequest $request)
+    {        
+        $type = new Type;
+        $type->name = $request->name;
+        $type->save();
+
+        return Redirect::to('/user/type');    
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * 
+     * @Get("user/type/edit/{id}")
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editType($id)
+    {
+        $type = Type::find($id);
+        return view('user.editType', ['type' => $type]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @Put("user/type/update/{id}")
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateType(Request $request, $id)
+    {
+        $type = Type::find($id);
+        $type->fill($request->all());
+        $type->save();
+
+        Session::flash('message', 'Tipo Editado Correctamente');
+
+        return Redirect::to('/user/type');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @Delete("user/type/delete/{id}")
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyType($id)
+    {
+        $usersToDelete = [];
+        $users = User::where('type_id', $id)->get(); //We retrieve all users which have the type that we want to delete
+
+        foreach ($users as $user) {
+            $usersToDelete[] = $user->id; //We store the users id to delete
+        }
+        User::destroy($usersToDelete); //We delete those users. We need delete them before becouse users have a foreign key (type_id)
+        Type::destroy($id);
+        Session::flash('message', 'Tipo Eliminado Correctamente');
+
+        return Redirect::to('/user/type');
     }
 }
