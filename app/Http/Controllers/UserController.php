@@ -10,7 +10,6 @@ use Session;
 use Redirect;
 use scm\Http\Requests;
 use scm\Http\Requests\UserCreateRequest;
-use scm\Http\Requests\UserUpdateRequest;
 use scm\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -86,7 +85,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserUpdateRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $user = User::find($id);
         $user->fill($request->all());
