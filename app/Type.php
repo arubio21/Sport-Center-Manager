@@ -26,6 +26,6 @@ class Type extends Model
     * @var -
     */
     public function user(){
-    	return $this->hasMany('scm/User');
+    	return $this->hasMany('scm\User', 'id');
     }
 }

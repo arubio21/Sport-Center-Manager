@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use scm\User;
 use scm\Type;
+use Mail;
 use Session;
 use Redirect;
 use scm\Http\Requests;
@@ -40,7 +41,7 @@ class UserController extends Controller
             'types' => Type::lists('name', 'id'),                    
         ];
 
-        return view('user.create', $aData);
+        return view('user.create', $aData);                                
     }
 
     /**
@@ -56,11 +57,13 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        $user->type_id = $request->type;
+        $user->type_id = $request->type;        
         //First we take the Unix date in ms, we get the first 10 characters and we encrypt 
-        //with md5 and finally we encrypt again with the laravel method bcrypt            
-        $user->password = bcrypt(substr( md5(microtime()), 1, 10));
+        //with md5 and finally we encrypt again with the laravel method bcrypt    
+        $password = substr( md5(microtime()), 1, 10);        
+        $user->password = bcrypt($password);
         $user->save();         
+        $this->welcomeMail($user, $password);
 
         return redirect('/user')->with('message', 'store');
     }
@@ -69,12 +72,13 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
+     * @Get("user/{id}")
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        return view('', ['user' => User::find($id)]);
     }
 
     /**
@@ -124,6 +128,39 @@ class UserController extends Controller
 
         return Redirect::to('/user');
     }
+
+    /**
+     * Show the users by types
+     *
+     * @Get("/user/type/{id}")
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function usersByType($id){
+        
+        return view('user.index', ['users' => User::where('type_id', $id)->get()]);
+    }
+
+    /**
+     * Send a welcome message mail to a new user
+     * 
+     * @param User String
+     */
+    public function welcomeMail($user, $password){
+        
+        $aData = [
+            'name'  => $user->name,
+            'phone' => $user->phone,
+            'password'  => $password,            
+        ];
+        $email = $user->email;
+        Mail::send('emails.welcomeMessage', $aData, function($message) use ($email){
+            $message->subject('Bienvendio a Sport Center Manager');
+            $message->to($email);
+        });
+
+        Session::flash('message', 'mensaje enviado');
+    }    
 
     /**
     * Show all the types

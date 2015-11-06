@@ -43,6 +43,6 @@ class User extends Model implements AuthenticatableContract,
      * @var -
      */
     public function type(){
-        return $this->belongTo('scm/Type');
+        return $this->belongsTo('scm\Type');
     }
 }
