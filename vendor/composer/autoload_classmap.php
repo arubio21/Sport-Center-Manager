@@ -3240,7 +3240,7 @@ return array(
     'Symfony\\Component\\Yaml\\Yaml' => $vendorDir . '/symfony/yaml/Yaml.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
-    'UpdateUserTable' => $baseDir . '/database/migrations/2015_11_04_233148_update_user_table.php',
+    'UpdateUserTable' => $baseDir . '/database/migrations/2015_11_05_223256_update_user_table.php',
     'XdgBaseDir\\Xdg' => $vendorDir . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock.php',
     'phpDocumentor\\Reflection\\DocBlock\\Context' => $vendorDir . '/phpdocumentor/reflection-docblock/src/phpDocumentor/Reflection/DocBlock/Context.php',

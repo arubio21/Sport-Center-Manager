@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SCM Admin</a>
+                <a class="navbar-brand" href="{!!URL::to('welcome')!!}">SCM Admin</a>
             </div>
            
 
@@ -49,7 +49,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Usuario<span class="fa arrow"></span></a>
+                            <a href="{!!URL::to('/user')!!}"><i class="fa fa-users fa-fw"></i> Usuario<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!!URL::to('/user/create')!!}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
@@ -60,7 +60,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-film fa-fw"></i> Tipo de Usuario<span class="fa arrow"></span></a>
+                            <a href="{!!URL::to('/user/type')!!}"><i class="fa fa-tags fa-fw"></i> Tipo de Usuario<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!!URL::to('/user/type/create')!!}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
