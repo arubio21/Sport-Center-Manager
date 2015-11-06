@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{!!URL::to('welcome')!!}">SCM Admin</a>
+                <a class="navbar-brand" href="index.html">SCM Admin</a>
             </div>
            
 
