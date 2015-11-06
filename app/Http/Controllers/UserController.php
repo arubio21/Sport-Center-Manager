@@ -132,7 +132,7 @@ class UserController extends Controller
     /**
      * Show the users by types
      *
-     * @Get("/user/type/{id}")
+     * @Get("/user/category/{id}")
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

@@ -54,7 +54,7 @@ $router->delete('user/delete/{id}', [
 	'domain' => NULL,
 ]);
 
-$router->get('user/type/{id}', [
+$router->get('user/category/{id}', [
 	'uses' => 'scm\Http\Controllers\UserController@usersByType',
 	'as' => NULL,
 	'middleware' => [],
