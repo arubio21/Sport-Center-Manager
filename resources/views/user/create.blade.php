@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@extends('layouts.admin')
 @section('tittle', $tittle)
 
 @section('content')

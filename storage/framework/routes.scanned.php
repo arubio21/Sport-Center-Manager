@@ -22,14 +22,6 @@ $router->post('user/store', [
 	'domain' => NULL,
 ]);
 
-$router->get('user/{id}', [
-	'uses' => 'scm\Http\Controllers\UserController@show',
-	'as' => NULL,
-	'middleware' => [],
-	'where' => [],
-	'domain' => NULL,
-]);
-
 $router->get('user/edit/{id}', [
 	'uses' => 'scm\Http\Controllers\UserController@edit',
 	'as' => NULL,
@@ -54,7 +46,7 @@ $router->delete('user/delete/{id}', [
 	'domain' => NULL,
 ]);
 
-$router->get('user/category/{id}', [
+$router->get('user/type/{id}', [
 	'uses' => 'scm\Http\Controllers\UserController@usersByType',
 	'as' => NULL,
 	'middleware' => [],

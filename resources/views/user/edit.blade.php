@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@extends('layouts.admin')
 @section('title', 'Editar usuarios')
 
 @section('content')

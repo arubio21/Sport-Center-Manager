@@ -65,7 +65,9 @@ class UserController extends Controller
         $user->save();         
         $this->welcomeMail($user, $password);
 
-        return redirect('/user')->with('message', 'store');
+        Session::flash('message', 'Usuario creado correctamente');
+
+        return Redirect::to('/user');
     }
     
 
@@ -76,10 +78,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        return view('', ['user' => User::find($id)]);
-    }
+    // public function show($id)
+    // {
+    //     return view('', ['user' => User::find($id)]);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -108,7 +110,7 @@ class UserController extends Controller
         $user->fill($request->all());
         $user->save();
 
-        Session::flash('message', 'Usuario Editado Correctamente');
+        Session::flash('message', 'Usuario editado correctamente');
 
         return Redirect::to('/user');
     }
@@ -124,7 +126,7 @@ class UserController extends Controller
     {
         User::destroy($id);
 
-        Session::flash('message', 'Usuario Eliminado Correctamente');
+        Session::flash('message', 'Usuario eliminado correctamente');
 
         return Redirect::to('/user');
     }
@@ -132,7 +134,7 @@ class UserController extends Controller
     /**
      * Show the users by types
      *
-     * @Get("/user/category/{id}")
+     * @Get("/user/type/{id}")
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -159,7 +161,7 @@ class UserController extends Controller
             $message->to($email);
         });
 
-        Session::flash('message', 'mensaje enviado');
+        Session::flash('message', 'Mensaje enviado');
     }    
 
     /**
